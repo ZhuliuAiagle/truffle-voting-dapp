@@ -1,97 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Voting System</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+      <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+      <title> Blk• Design System by Creative Tim </title>
+      <!--     Fonts and icons     -->
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+      <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+      <!-- Nucleo Icons -->
+      <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+      <!-- CSS Files -->
+      <link href="../assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
+      <!-- CSS Just for demo purpose, don't include it in your project -->
+      <link href="../assets/demo/demo.css" rel="stylesheet" />
   </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-push-2">
-          <h1 class="text-center">Example Voting System dapp</h1>
+  <body class="index-page">
+      <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
+            <div class="container">
+                <div class="navbar-translate">
+                <a class="navbar-brand" href="https://demos.creative-tim.com/blk-design-system/index.html" rel="tooltip" data-placement="bottom" target="_blank">
+                    <span>BB98•</span> 匿名版
+                </a>
+                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </button>
+                </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a>
+                        BLK•
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close text-right">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="fa fa-cogs d-lg-none d-xl-none"></i> 选项
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a href="https://demos.creative-tim.com/blk-design-system/docs/1.0/getting-started/overview.html" class="dropdown-item">
+                        <i class="tim-icons icon-paper"></i> 关于本系统
+                        </a>
+                    </div>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="wrapper">
+      <div class="page-header header-filter">
+          <div class="squares square1"></div>
+          <div class="squares square2"></div>
+          <div class="squares square3"></div>
+          <div class="squares square4"></div>
+          <div class="squares square5"></div>
+          <div class="squares square6"></div>
+          <div class="squares square7"></div>
+          <div class="container">
+              <div class="content-center brand">
+              <h1 class="h1-seo">ZJU•BB98</h1>
+              <h3>基于 Ethereum™ 区块链的校内匿名留言版.</h3>
+              <div class="form-group">
+                    <input type="text" value="" placeholder="您所说的一切都将被匿名展示..." class="form-control input-value" name="input" />
+                    <br/>
+                    <button class="btn btn-primary btn-round btn-value" type="button" name="button" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">发送</button>
+              </div>
+              </div>
+          </div>
       </div>
-
       <hr/>
       <br/>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="input-group">
-            <input type="text" class="form-control input-value" name="input" placeholder="New proposal..." value="">
-            <div class="input-group-btn">
-              <button type="button" name="button" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-default btn-value">Save</button>
+      <hr/>
+      <br/>
+      <div class="main">
+
+          <div id="wrapperProposals">
+          </div>
+          
+      <div id="fakeproposalTemplate" style="display:none;">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3 class="panel-title">Example</h3>
+              <br>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p>Approve vote: <span class="numVotesPos">0</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <button type="button" name="button" data-vote="1" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-primary btn-vote">Approve</button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p>Against votes: <span class="numVotesNeg">0</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <button type="button" name="button" data-vote="2" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-danger btn-vote">Against</button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p>Abstence votes: <span class="numVotesAbs">0</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <button type="button" name="button" data-vote="3" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-warning btn-vote">Abstence</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+          <hr/>
+          <br/>
       </div>
-
-      <hr/>
-      <br/>
-
-      <div id="wrapperProposals">
+      <div id="proposalTemplate" style="display:none;">
+          <div class="col-md-12 ml-auto col-xl-6 mr-auto">
+              <div class="card">
+                  <div class="card-header">
+                    <ul class="nav nav-tabs nav-tabs-primary" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
+                          <i class="tim-icons icon-spaceship"></i> 内容
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <!-- Tab panes -->
+                    <div class="tab-content tab-space">
+                      <div class="tab-pane active" id="link1" style="text-align: center;">
+                        <p class="panel-title">我是傻逼</p>
+                        <br/>
+                        <p>赞: <span class="numVotesPos"></span></p>
+                        <p>踩: <span class="numVotesNeg"></span></p>
+                        <p style="display: none;">踩: <span class="numVotesAbs"></span></p>
+                      </div>
+                    </div>
+                    <div style="text-align: right;">
+                    <button type="button" name="button" data-vote="1" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-success btn-vote">赞这条动态</button>
+                    <button type="button" name="button" data-vote="2" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"class="btn btn-danger btn-vote">踩这条动态</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
       </div>
-
     </div>
-
-    <div id="proposalTemplate" style="display:none;">
-      <div class="row">
-        <div class="col-xs-12">
-          <h3 class="panel-title">Example</h3>
-          <br>
-          <div class="row">
-            <div class="col-xs-6">
-              <p>Approve vote: <span class="numVotesPos">0</span></p>
-            </div>
-            <div class="col-xs-6">
-              <button type="button" name="button" data-vote="1" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-primary btn-vote">Approve</button>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-xs-6">
-              <p>Against votes: <span class="numVotesNeg">0</span></p>
-            </div>
-            <div class="col-xs-6">
-              <button type="button" name="button" data-vote="2" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-danger btn-vote">Against</button>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-xs-6">
-              <p>Abstence votes: <span class="numVotesAbs">0</span></p>
-            </div>
-            <div class="col-xs-6">
-              <button type="button" name="button" data-vote="3" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-warning btn-vote">Abstence</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr/>
-      <br/>
-    </div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/web3.min.js"></script>
-    <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
+    <!-- <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script> -->
+    <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="./js/web3.min.js" type="text/javascript"></script>
+    <script src="./js/truffle-contract.js" type="text/javascript"></script>
+    <script src="./js/app.js" type="text/javascript"></script>
+    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+    <script src="./assets/js/plugins/bootstrap-switch.js"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!-- Chart JS -->
+    <script src="./assets/js/plugins/chartjs.min.js"></script>
+    <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+    <script src="./assets/js/plugins/moment.min.js"></script>
+    <script src="./assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!-- Black Dashboard DEMO methods, don't include it in your project! -->
+    <script src="./assets/demo/demo.js"></script>
+    <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
+    <script src="./assets/js/blk-design-system.min.js?v=1.0.0" type="text/javascript"></script>
   </body>
 </html>

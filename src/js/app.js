@@ -74,6 +74,7 @@ App = {
               for (j=0; j<data[5].length; j++) {
                 if (data[5][j] == account) {
                   proposalTemplate.find('.btn-vote').attr('disabled', true);
+                  //proposalTemplate.find('.btn-vote').text('你已经赞、踩过这条动态');
                 }
               }
               wrapperProposals.append(proposalTemplate.html());
