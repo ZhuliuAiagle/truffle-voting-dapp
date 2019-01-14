@@ -1,3 +1,6 @@
+
+intList = []
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -22,11 +25,11 @@ App = {
 
   // Instance contract
   initContract: function() {
-    $.getJSON('Voting.json', function(data) {
+    $.getJSON('Commenting.json', function(data) {
       // Get the necessary contract artifact file and instantiate it with truffle-contract
-      App.contracts.Voting = TruffleContract(data);
+      App.contracts.Commenting = TruffleContract(data);
       // Set the provider for our contract
-      App.contracts.Voting.setProvider(App.web3Provider);
+      App.contracts.Commenting.setProvider(App.web3Provider);
       // Use our contract to retrieve value data
       App.getProposals();
     });
@@ -56,31 +59,40 @@ App = {
         console.log(error);
       }
       var account = accounts[0];
-      App.contracts.Voting.deployed().then(function(instance) {
+      App.contracts.Commenting.deployed().then(function(instance) {
         proposalsInstance = instance;
         proposalsInstance.getNumProposals.call().then(function(numProposals) {
           var wrapperProposals = $('#wrapperProposals');
           wrapperProposals.empty();
           var proposalTemplate = $('#proposalTemplate');
-          for (var i=0; i<numProposals; i++) {
-            proposalsInstance.getProposal.call(i).then(function(data) {
-              var idx = data[0];
-              proposalTemplate.find('.panel-title').text(data[1]);
-              proposalTemplate.find('.numVotesPos').text(data[2]);
-              proposalTemplate.find('.numVotesNeg').text(data[3]);
-              proposalTemplate.find('.numVotesAbs').text(data[4]);
-              proposalTemplate.find('.btn-vote').attr('data-proposal', idx);
-              proposalTemplate.find('.btn-vote').attr('disabled', false);
-              for (j=0; j<data[5].length; j++) {
-                if (data[5][j] == account) {
-                  proposalTemplate.find('.btn-vote').attr('disabled', true);
-                  //proposalTemplate.find('.btn-vote').text('你已经赞、踩过这条动态');
+          proposalTemplate.find('.btn-vote').attr('data-proposal', '');
+          if(numProposals > 0){
+            for (var i = numProposals - 1; i >= 0; i--) {
+              proposalsInstance.getProposal.call(i).then(function(data) {
+                var idx = data[0];
+                proposalTemplate.find('.panel-title').text(data[1]);
+                proposalTemplate.find('.numVotesPos').text(data[2]);
+                proposalTemplate.find('.numVotesNeg').text(data[3]);
+                proposalTemplate.find('.numVotesAbs').text(data[4]);
+                console.log(idx.c[0]);
+                intList.push(idx.c[0]);
+                proposalTemplate.find('.btn-success').attr('data-target', "#myModal1" + idx.c[0]);
+                proposalTemplate.find('.btn-danger').attr('data-target', "#myModal2" + idx.c[0]);
+                proposalTemplate.find('.modal1').attr('id', "myModal1" + idx.c[0]);
+                proposalTemplate.find('.modal2').attr('id', "myModal2" + idx.c[0]);
+
+                proposalTemplate.find('.btn-vote').attr('data-proposal', idx);
+                proposalTemplate.find('.btn-prevote').attr('disabled', false);
+                for (j=0; j<data[5].length; j++) {
+                  if (data[5][j] == account) {
+                    proposalTemplate.find('.btn-prevote').attr('disabled', true);
+                  }
                 }
-              }
-              wrapperProposals.append(proposalTemplate.html());
-            }).catch(function(err) {
-              console.log(err.message);
-            });
+                wrapperProposals.append(proposalTemplate.html());
+              }).catch(function(err) {
+                console.log(err.message);
+              });
+            }
           }
         }).catch(function(err) {
           console.log(err.message);
@@ -99,7 +111,7 @@ App = {
         console.log(error);
       }
       var account = accounts[0];
-      App.contracts.Voting.deployed().then(function(instance) {
+      App.contracts.Commenting.deployed().then(function(instance) {
         proposalInstance = instance;
         return proposalInstance.addProposal(value, {from: account});
       }).then(function(result) {
@@ -115,19 +127,22 @@ App = {
 
   handleAddVote: function(event) {
     event.preventDefault();
-    var voteInstance;
-    var voteValue = parseInt($(event.target).data('vote'));
+    var commentInstance;
+    console.log(event.target);
+    var commentValue = parseInt($(event.target).data('vote'));
     var proposalInt = parseInt($(event.target).data('proposal'));
+    console.log(commentValue, proposalInt);
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
         console.log(error);
       }
       var account = accounts[0];
-      App.contracts.Voting.deployed().then(function(instance) {
-        voteInstance = instance;
-        return voteInstance.vote(proposalInt, voteValue, {from: account});
+      console.log(account);
+      App.contracts.Commenting.deployed().then(function(instance) {
+        commentInstance = instance;
+        return commentInstance.comment(proposalInt, commentValue, {from: account});
       }).then(function(result) {
-        var event = voteInstance.CreatedVoteEvent();
+        var event = commentInstance.CreatedCommentEvent();
         App.handleEvent(event);
       }).catch(function(err) {
         console.log(err.message);
@@ -140,6 +155,8 @@ App = {
     console.log('Waiting for a event...');
     event.watch(function(error, result) {
       if (!error) {
+        console.log('no error');
+        location.reload();
         App.getProposals();
       } else {
         console.log(error);

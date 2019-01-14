@@ -1,5 +1,5 @@
-var Voting = artifacts.require("Voting");
+var Commenting = artifacts.require("./Commenting.sol");
 
 module.exports = function(deployer, network, accounts) {
-  deployer.deploy(Voting);
+  deployer.deploy(Commenting);
 };

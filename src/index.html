@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
       <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-      <title> Blk• Design System by Creative Tim </title>
+      <title>BB98匿名版</title>
       <!--     Fonts and icons     -->
       <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
       <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -20,7 +20,7 @@
       <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
             <div class="container">
                 <div class="navbar-translate">
-                <a class="navbar-brand" href="https://demos.creative-tim.com/blk-design-system/index.html" rel="tooltip" data-placement="bottom" target="_blank">
+                <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom" target="_blank">
                     <span>BB98•</span> 匿名版
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@
                         <i class="fa fa-cogs d-lg-none d-xl-none"></i> 选项
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
-                        <a href="https://demos.creative-tim.com/blk-design-system/docs/1.0/getting-started/overview.html" class="dropdown-item">
+                        <a href="#" class="dropdown-item">
                         <i class="tim-icons icon-paper"></i> 关于本系统
                         </a>
                     </div>
@@ -70,63 +70,25 @@
           <div class="squares square7"></div>
           <div class="container">
               <div class="content-center brand">
-              <h1 class="h1-seo">ZJU•BB98</h1>
-              <h3>基于 Ethereum™ 区块链的校内匿名留言版.</h3>
+              <img src="./assets/img/400X300.png" style="width:300px;"></img>
+              <h1 class="h1-seo">ZJU•BB98树洞</h1>
+              <h3>基于 Ethereum™ 的浙大校内匿名树洞</h3>
               <div class="form-group">
-                    <input type="text" value="" placeholder="您所说的一切都将被匿名展示..." class="form-control input-value" name="input" />
+                    <input type="text" value="" placeholder="您可以自由的表达观点..." class="form-control input-value" name="input" />
                     <br/>
                     <button class="btn btn-primary btn-round btn-value" type="button" name="button" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">发送</button>
               </div>
               </div>
           </div>
       </div>
-      <hr/>
-      <br/>
 
-      <hr/>
-      <br/>
       <div class="main">
 
-          <div id="wrapperProposals">
-          </div>
-          
-      <div id="fakeproposalTemplate" style="display:none;">
-          <div class="row">
-            <div class="col-xs-12">
-              <h3 class="panel-title">Example</h3>
-              <br>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p>Approve vote: <span class="numVotesPos">0</span></p>
-                </div>
-                <div class="col-xs-6">
-                  <button type="button" name="button" data-vote="1" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-primary btn-vote">Approve</button>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p>Against votes: <span class="numVotesNeg">0</span></p>
-                </div>
-                <div class="col-xs-6">
-                  <button type="button" name="button" data-vote="2" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-danger btn-vote">Against</button>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p>Abstence votes: <span class="numVotesAbs">0</span></p>
-                </div>
-                <div class="col-xs-6">
-                  <button type="button" name="button" data-vote="3" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-warning btn-vote">Abstence</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr/>
-          <br/>
+      <div id="wrapperProposals">
       </div>
+          
       <div id="proposalTemplate" style="display:none;">
+        <div>
           <div class="col-md-12 ml-auto col-xl-6 mr-auto">
               <div class="card">
                   <div class="card-header">
@@ -150,12 +112,54 @@
                       </div>
                     </div>
                     <div style="text-align: right;">
-                    <button type="button" name="button" data-vote="1" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-success btn-vote">赞这条动态</button>
-                    <button type="button" name="button" data-vote="2" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"class="btn btn-danger btn-vote">踩这条动态</button>
+                      <button id = "" type="button" data-toggle="modal" data-target="" data-proposal = "" class="btn btn-success btn-prevote">赞这条动态</button>
+                      <button id = "" type="button" data-toggle="modal" data-target="" data-proposal = "" class="btn btn-danger btn-prevote">踩这条动态</button>
                     </div>
                   </div>
-                </div>
+              </div>
             </div>
+            <div class="modal fade modal1" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header justify-content-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="tim-icons icon-simple-remove"></i>
+                    </button>
+                    <h4 class="title title-up">警告！</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>您选择赞这条动态。<br/>选择您的态度并确认交易后，您将无法修改您的态度！确认继续？
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" name="button" data-vote="1" data-proposal="" class="btn btn-default btn-vote" >确认提交！</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">再想想</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade modal2" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header justify-content-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="tim-icons icon-simple-remove"></i>
+                    </button>
+                    <h4 class="title title-up">警告！</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>您选择踩这条动态。<br/>选择您的态度并确认交易后，您将无法修改您的态度！确认继续？
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button"  name="button" data-vote="2" data-proposal=""  class="btn btn-default btn-vote">确认提交！</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">再想想</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     
