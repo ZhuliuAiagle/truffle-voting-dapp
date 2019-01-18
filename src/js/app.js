@@ -31,7 +31,7 @@ App = {
       // Set the provider for our contract
       App.contracts.Commenting.setProvider(App.web3Provider);
       // Use our contract to retrieve value data
-      App.getProposals();
+      App.getPosts();
     });
     return App.bindEvents();
   },
@@ -52,7 +52,7 @@ App = {
 
   },
 
-  getProposals: function() {
+  getPosts: function() {
     var proposalsInstance;
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
@@ -61,14 +61,14 @@ App = {
       var account = accounts[0];
       App.contracts.Commenting.deployed().then(function(instance) {
         proposalsInstance = instance;
-        proposalsInstance.getNumProposals.call().then(function(numProposals) {
+        proposalsInstance.getNumPosts.call().then(function(numPosts) {
           var wrapperProposals = $('#wrapperProposals');
           wrapperProposals.empty();
           var proposalTemplate = $('#proposalTemplate');
           proposalTemplate.find('.btn-vote').attr('data-proposal', '');
-          if(numProposals > 0){
-            for (var i = numProposals - 1; i >= 0; i--) {
-              proposalsInstance.getProposal.call(i).then(function(data) {
+          if(numPosts > 0){
+            for (var i = numPosts - 1; i >= 0; i--) {
+              proposalsInstance.getPost.call(i).then(function(data) {
                 var idx = data[0];
                 proposalTemplate.find('.panel-title').text(data[1]);
                 proposalTemplate.find('.numVotesPos').text(data[2]);
@@ -113,9 +113,9 @@ App = {
       var account = accounts[0];
       App.contracts.Commenting.deployed().then(function(instance) {
         proposalInstance = instance;
-        return proposalInstance.addProposal(value, {from: account});
+        return proposalInstance.addPost(value, {from: account});
       }).then(function(result) {
-        var event = proposalInstance.CreatedProposalEvent();
+        var event = proposalInstance.CreatedPostEvent();
         App.handleEvent(event);
         $('.input-value').val(''); // clean input
       }).catch(function(err) {
@@ -157,7 +157,7 @@ App = {
       if (!error) {
         console.log('no error');
         location.reload();
-        App.getProposals();
+        App.getPosts();
       } else {
         console.log(error);
       }
